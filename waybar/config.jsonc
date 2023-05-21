@@ -1,0 +1,122 @@
+{
+    "layer": "top",
+    "height": 45,
+    "spacing": 0,
+    "output": "HDMI-A-2",
+    "exclusive": true,
+    "position": "top",
+    "passthrough": false,
+    "modules-left": ["wlr/workspaces"],
+    "modules-center": ["custom/playerctl"],
+    "modules-right": ["network", "pulseaudio", "battery", "backlight", "clock", "custom/backchanger", "custom/powermenu"],
+
+
+    // Modules configuration
+  "hyprland/window": {
+	      "format": "{}"
+    },
+
+    "wlr/workspaces": {
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "all-outputs": true,
+        "on-click": "activate",
+	"format": "{icon}",
+	"format-icons": {
+      "1": " ",
+      "2": " ",
+      "3": " ",
+      "4": " ",
+      "5": "󰙯 ",
+      "6": " ",
+      "7": "󰊻 ",
+      "8": " ",
+      "9": "󰅟 ",
+      "10": ""
+    }
+},
+
+    /* "custom/vpn": {
+    	"format": "{}",
+        "interval": 1,
+        "exec": "~/bin/waybar-vpn.sh"
+    }, */
+    "custom/playerctl": {
+    	"format": "<span foreground='#1B1F28'> </span><span font='OperatorMonoSSm Nerd Font weight=325 Italic'>{}</span>",
+        "interval": 1,
+        "on-click": "playerctl -p spotify play-pause",
+        "on-scroll-up": "playerctl -p spotify previous",
+        "on-scroll-down": "playerctl -p spotify next",
+        "tooltip": false,
+        "escape": true,
+        "max-length": 60,
+        "exec": "~/.config/waybar/scripts/playerctl.sh"
+    },
+	"clock": {
+		"format": "<span foreground='#1B1F28'> </span>{:%H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><span font-family='RobotoMono Nerd Font'><small>{calendar}</small></span></tt>"
+	},
+	"battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        	},
+		    "format": "<span size='13000' foreground='#1B1F28'>{icon} </span>{capacity}%",
+		    "format-warning": "<span size='13000' foreground='#1B1F28'>{icon} </span>{capacity}%",
+		    "format-critical": "<span size='13000' foreground='#1B1F28'>{icon} </span>{capacity}%",
+		    "format-charging": "<span size='13000' foreground='#1B1F28'> </span>{capacity}%",
+		    "format-plugged": "<span size='13000' foreground='#1B1F28'> </span>{capacity}%",
+		    "format-alt": "<span size='13000' foreground='#1B1F28'>{icon} </span>{time}",
+		    "format-full": "<span size='13000' foreground='#1B1F28'>  </span>{capacity}%",
+        	"format-icons": [" ", " ", " ", " ", " "],
+            "tooltip-format": "{time}"
+	},
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon}{percent}%",
+    "format-icons": ["󰃞 ", "󰃟 ", "󰃠 "],
+    "on-scroll-up": "xbacklight -inc 0.5",
+    "on-scroll-down": "xbacklight -dec 0.5"
+    },
+
+	"network": {
+        "format-wifi": "<span size='13000' foreground='#1B1F28'>  </span>{essid}",
+        "format-ethernet": "<span size='13000' foreground='#1B1F28'>󰈀</span> enp5s0",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "<span size='13000' foreground='#1B1F28'> </span>Disconnected",
+		"tooltip-format-wifi": "Signal Strength: {signalStrength}%",
+    "on-click": "wofi-wifi-menu"
+	},
+
+	"pulseaudio": {
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol",
+    "on-click-middle": "rofi-bluetooth",
+		"format": "<span size='13000' foreground='#1B1F28'>{icon}</span> {volume}%",
+        "format-muted": "<span size='13000' foreground='#1B1F28'></span> Muted",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        }
+    },
+
+        "custom/backchanger": {
+	"format": "<span foreground='#1B1F28'> 󰐾</span>",
+        "on-click": "~/.config/waybar/scripts/baraction",
+        "tooltip": false
+    },
+
+    "custom/powermenu": {
+	"format": "<span foreground='#1B1F28'> </span>",
+	"on-click": "wlogout",
+	"tooltip": false
+    }
+
+
+}
