@@ -1,5 +1,3 @@
-#!/bin/bash
-
 FORMAT="{{ title }} - {{ artist }}"
 
 playerctl_status=$(playerctl status 2>/dev/null)

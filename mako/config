@@ -1,0 +1,16 @@
+background-color=#282a36
+text-color=#999999
+border-color=#9c27b0
+border-size=1
+border-radius=10
+default-timeout=4000
+margin=2
+anchor=top-left
+[urgency=low]
+border-color=#282a36
+
+[urgency=normal]
+border-color=#f1fa8c
+
+[urgency=high]
+border-color=#ff5555

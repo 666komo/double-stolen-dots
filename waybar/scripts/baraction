@@ -1,14 +1,5 @@
-#!/bin/sh
+#!/bin/bash
 
-i=$(cat ~/.config/walpnum)
-$i+1
-
-if [ "$((i+1))" -eq 6 ]; then
-    $i=1
-fi
-
-swaybg -i ~/Wallpaper/wall$i.jpg
-
-rm ~/.config/walpnum
-echo "$i" > ~/.config/walpnum
-
+hyprctl dispatch workspace 10
+sleep 3
+kitty -e btop & active
